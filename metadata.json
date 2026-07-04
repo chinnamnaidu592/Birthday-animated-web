@@ -1,0 +1,6 @@
+{
+  "name": "Moonlight: Birthday Journey for Greeshma",
+  "description": "An interactive, cinematic birthday journey for Greeshma featuring a friendly moon guide, cousin greetings, and magical interactive celebration elements.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

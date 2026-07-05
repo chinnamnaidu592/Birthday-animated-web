@@ -21,7 +21,7 @@ export default function ChapterIntro({ onNext, isAudioInitialized, onInitializeA
   const [showNextButton, setShowNextButton] = useState(false);
 
   // Text typewriter steps
-  const line1 = "  Hello Greeshma gaaruuu ";
+  const line1 = " Hello Greeshma Garuuuuuuu";
   const line2 = "  Mi cousins miku oka message ni pampincharuuu, ento chudali ani undhaaaaaaa...? ";
 
   useEffect(() => {
@@ -39,9 +39,10 @@ export default function ChapterIntro({ onNext, isAudioInitialized, onInitializeA
     // Start typewriter effect for line 1
     let index = 0;
     const interval = setInterval(() => {
-      setNarrativeText((prev) => prev + line1[index]);
-      index++;
-      if (index >= line1.length) {
+      if (index < line1.length) {
+        setNarrativeText((prev) => prev + line1[index]);
+        index++;
+      } else {
         clearInterval(interval);
 
         // Wait 2 seconds, then transition to line 2
@@ -50,9 +51,10 @@ export default function ChapterIntro({ onNext, isAudioInitialized, onInitializeA
           setNarrativeText('');
           let idx2 = 0;
           const intervalG2 = setInterval(() => {
-            setNarrativeText((prev) => prev + line2[idx2]);
-            idx2++;
-            if (idx2 >= line2.length) {
+            if (idx2 < line2.length) {
+              setNarrativeText((prev) => prev + line2[idx2]);
+              idx2++;
+            } else {
               clearInterval(intervalG2);
               setShowNextButton(true);
             }

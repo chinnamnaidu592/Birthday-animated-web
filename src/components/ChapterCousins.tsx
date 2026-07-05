@@ -143,7 +143,7 @@ export default function ChapterCousins({ onNext }: ChapterCousinsProps) {
 
         {/* Message */}
         <p className={`font-sans text-xs text-slate-300/90 leading-relaxed flex-grow ${hasAudio ? 'mb-6' : 'mb-2'}`}>
-          "{person.message}"
+          "{(person.message ?? '').toString().trim()}"
         </p>
 
         {/* Button play/pause controls */}

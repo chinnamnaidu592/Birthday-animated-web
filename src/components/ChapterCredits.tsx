@@ -41,7 +41,7 @@ export default function ChapterCredits({ onRestart }: ChapterCreditsProps) {
     <div 
       className="min-h-screen w-full flex flex-col items-center justify-center p-6 overflow-hidden relative z-10"
       style={{
-        backgroundImage: "url('/images/prakash_greeshma.jpeg')",
+        backgroundImage: "url('/images/prakash_greeshma.jpg')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',

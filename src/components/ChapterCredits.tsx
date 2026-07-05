@@ -38,9 +38,17 @@ export default function ChapterCredits({ onRestart }: ChapterCreditsProps) {
   }, [onRestart]);
 
   return (
-    <div className="min-h-screen w-full bg-black flex flex-col items-center justify-center p-6 overflow-hidden relative z-10">
-      {/* Completely black background with no other UI */}
-      <div className="absolute inset-0 bg-black" />
+    <div 
+      className="min-h-screen w-full flex flex-col items-center justify-center p-6 overflow-hidden relative z-10"
+      style={{
+        backgroundImage: "url('/images/prakash_greeshma.jpeg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
+    >
+      {/* Black gradient overlay for text readability (50-60% opacity) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/55 to-black/60" />
 
       {/* Credits content - centered */}
       <motion.div

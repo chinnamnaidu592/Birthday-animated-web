@@ -21,8 +21,8 @@ export default function ChapterIntro({ onNext, isAudioInitialized, onInitializeA
   const [showNextButton, setShowNextButton] = useState(false);
 
   // Text typewriter steps
-  const line1 = " Hello Greeshma Garuuuuuuu ";
-  const line2 = "Mi cousins miku oka message ni pampincharuuu, ento chudali ani undhaaaaaaa...? ";
+  const line1 = " Hello Greeshma Garuuuuuuu  ";
+  const line2 = " mi cousins miku oka message ni pampincharuuu, ento chudali ani undhaaaaaaa...? ";
 
   useEffect(() => {
     const timer = setTimeout(() => {

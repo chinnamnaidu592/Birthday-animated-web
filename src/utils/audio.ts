@@ -438,6 +438,25 @@ class DynamicAudioManager {
       this.currentCustomAudio = null;
     }
   }
+
+  pauseBackgroundMusic() {
+    if (this.musicGain && this.ctx) {
+      this.musicGain.gain.setTargetAtTime(0, this.ctx.currentTime, 0.3);
+    }
+    if (this.currentCustomBgMusic) {
+      this.currentCustomBgMusic.pause();
+    }
+  }
+
+  resumeBackgroundMusic() {
+    if (this.musicGain && this.ctx) {
+      const targetGain = this.isMuted ? 0 : (this.currentMode === 'celebration' ? 0.35 : 0.25);
+      this.musicGain.gain.setTargetAtTime(targetGain, this.ctx.currentTime, 0.5);
+    }
+    if (this.currentCustomBgMusic && !this.isMuted) {
+      this.currentCustomBgMusic.play();
+    }
+  }
 }
 
 export const audio = new DynamicAudioManager();

@@ -50,11 +50,17 @@ export default function ChapterCousins({ onNext }: ChapterCousinsProps) {
   const handlePlayToggle = (person: Person) => {
     if (playingPerson === person.key) {
       audio.stopAllSpeech();
+      audio.resumeBackgroundMusic();
       setPlayingPerson(null);
     } else {
       audio.stopAllSpeech();
       setPlayingPerson(person.key);
-      audio.speakGreeting(person.name, person.message, () => {
+      // Pause background music when starting audio
+      audio.pauseBackgroundMusic();
+      // Sanitize message to remove any undefined values
+      const sanitizedMessage = (person.message || '').toString().trim();
+      audio.speakGreeting(person.name, sanitizedMessage, () => {
+        audio.resumeBackgroundMusic();
         setPlayingPerson(null);
       });
     }
@@ -62,7 +68,8 @@ export default function ChapterCousins({ onNext }: ChapterCousinsProps) {
 
   const renderCard = (person: Person, idx: number, isParent: boolean) => {
     const isPlaying = playingPerson === person.key;
-    const hasAudio = true;
+    // Disable audio for Father and Mother
+    const hasAudio = !(person.key === 'father' || person.key === 'mother');
 
     return (
       <motion.div

@@ -32,7 +32,7 @@ export default function ChapterFinal({ onRestart }: ChapterFinalProps) {
       setPhotoVisible(true);
     }, 1200);
 
-    // 2. Start typewriter animation after 2.5 seconds
+    // 2. Start typewriter animation after 2.5 seconds - with faster speed for smooth letter display
     const typeTimer = setTimeout(() => {
       const chars = Array.from(finalGreeting); // Use Array.from to correctly split emoji/unicode chars
       let index = 0;
@@ -50,12 +50,12 @@ export default function ChapterFinal({ onRestart }: ChapterFinalProps) {
               // 4. Reveal replay options
               setTimeout(() => {
                 setShowRestart(true);
-              }, 4000);
-            }, 2500);
-          }, 1500);
+              }, 3000);
+            }, 2000);
+          }, 1000);
         }
-      }, 70);
-    }, 2800);
+      }, 40);
+    }, 2000);
 
     return () => {
       clearTimeout(photoTimer);

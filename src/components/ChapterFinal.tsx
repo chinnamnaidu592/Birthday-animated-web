@@ -12,10 +12,11 @@ import { audio } from '../utils/audio';
 import SafeImage from './SafeImage';
 
 interface ChapterFinalProps {
+  onNext: () => void;
   onRestart: () => void;
 }
 
-export default function ChapterFinal({ onRestart }: ChapterFinalProps) {
+export default function ChapterFinal({ onNext, onRestart }: ChapterFinalProps) {
   const [moonState, setMoonState] = useState<MoonState>('happy');
   const [finalText, setFinalText] = useState('');
   const [showRestart, setShowRestart] = useState(false);
@@ -132,14 +133,14 @@ export default function ChapterFinal({ onRestart }: ChapterFinalProps) {
                 </div>
 
                 <button
-                  id="replay-journey-btn"
+                  id="view-credits-btn"
                   onClick={() => {
                     audio.playPop();
-                    onRestart();
+                    onNext();
                   }}
                   className="px-10 py-3 bg-yellow-100 text-slate-900 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-white transition-colors duration-300 active:scale-95 flex items-center gap-2 cursor-pointer shadow-xl"
                 >
-                  <RotateCcw className="w-3.5 h-3.5" /> Replay Journey
+                  <RotateCcw className="w-3.5 h-3.5" /> End Credits
                 </button>
               </motion.div>
             )}

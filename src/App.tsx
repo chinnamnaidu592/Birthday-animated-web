@@ -15,10 +15,11 @@ import ChapterGallery from './components/ChapterGallery';
 import ChapterAppreciation from './components/ChapterAppreciation';
 import ChapterCelebration from './components/ChapterCelebration';
 import ChapterFinal from './components/ChapterFinal';
+import ChapterCredits from './components/ChapterCredits';
 import { audio } from './utils/audio';
 import { BIRTHDAY_IMAGES } from './utils/images';
 
-type ActiveChapter = 'intro' | 'password' | 'timeline' | 'cousins' | 'gallery' | 'appreciation' | 'celebration' | 'final';
+type ActiveChapter = 'intro' | 'password' | 'timeline' | 'cousins' | 'gallery' | 'appreciation' | 'celebration' | 'final' | 'credits';
 
 export default function App() {
   const [currentChapter, setCurrentChapter] = useState<ActiveChapter>('intro');
@@ -41,6 +42,7 @@ export default function App() {
       case 6: return 'appreciation';
       case 7: return 'celebration';
       case 8: return 'final';
+      case 9: return 'credits';
       default: return 'intro';
     }
   };
@@ -55,6 +57,7 @@ export default function App() {
       case 'appreciation': return { index: 6, name: 'LETTER OF LOVE' };
       case 'celebration': return { index: 7, name: 'MAKE A WISH' };
       case 'final': return { index: 8, name: 'STARRY NIGHT' };
+      case 'credits': return { index: 9, name: 'END CREDITS' };
       default: return { index: 1, name: 'WELCOME' };
     }
   };
@@ -123,6 +126,13 @@ export default function App() {
       case 'final':
         return (
           <ChapterFinal
+            onNext={() => setCurrentChapter('credits')}
+            onRestart={handleRestart}
+          />
+        );
+      case 'credits':
+        return (
+          <ChapterCredits
             onRestart={handleRestart}
           />
         );
@@ -189,10 +199,10 @@ export default function App() {
             {/* Active progress track */}
             <div 
               className="absolute top-1/2 left-0 h-[1px] bg-gradient-to-r from-yellow-300 to-yellow-100 -translate-y-1/2 z-0 transition-all duration-500" 
-              style={{ width: `${((chapterIndex - 1) / 7) * 100}%` }}
+              style={{ width: `${((chapterIndex - 1) / 8) * 100}%` }}
             />
 
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => {
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => {
               const isActive = num === chapterIndex;
               const isPassed = num < chapterIndex;
               const chKey = getChapterKeyByNum(num);
@@ -243,7 +253,7 @@ export default function App() {
             <div className="flex items-center gap-2">
               <span className="text-[9px] uppercase tracking-[0.25em] text-slate-500">Journey Map:</span>
               <span className="text-[10px] text-yellow-100/90 uppercase tracking-[0.18em] font-bold">{chapterName}</span>
-              <span className="text-[9px] text-slate-400">({chapterIndex}/8)</span>
+              <span className="text-[9px] text-slate-400">({chapterIndex}/9)</span>
             </div>
             <div className="h-[1px] w-32 bg-gradient-to-r from-transparent via-white/10 to-transparent mt-1.5"></div>
           </div>
